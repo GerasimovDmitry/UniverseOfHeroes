@@ -19,6 +19,15 @@ public class Hero {
         this.alive = alive;
     }
 
+    public Hero(String name, String universe, int power, String description, boolean alive) {
+        this.id = 0;
+        this.name = name;
+        this.universe = universe;
+        this.power = power;
+        this.description = description;
+        this.alive = alive;
+    }
+
     public int getId() {
         return id;
     }
@@ -79,7 +88,7 @@ public class Hero {
                 "\"universe\":\"" + universe + "\", " +
                 "\"power\":" + power + ", "+
                 "\"description\":\"" + description + "\", " +
-                "\"alive\":" + alive + ", " + "\"" +
+                "\"alive\":" + alive +
                 "}";
     }
 }

@@ -7,7 +7,7 @@ function loadTable() {
             paint(json);
         }
     };
-    xmlhttp.open("GET", "heroes?action=ajax", true);
+    xmlhttp.open("GET", "heroes?action=all", true);
     xmlhttp.send();
 }
 
@@ -32,6 +32,7 @@ function paint(json) {
         var tdAlive = document.createElement("td");
         tdAlive.innerText = json[x].alive;
         tr.appendChild(tdAlive);
+        var tdLogo = document.createElement("td");
         var tdDelete = document.createElement("td");
         var deleteBtn = document.createElement("button");
         deleteBtn.setAttribute("id", "deleteBtn");
@@ -128,7 +129,7 @@ function save(id, name, universe, power, description, alive) {
     };
         xmlhttp.open("POST", "heroes", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xmlhttp.send("id=" + id + "&" + "name=" + name + "&" + "universe=" + universe + "&" + "power=" + power + "&" + "description=" + description + "&" + "alive=" + alive + "&");
+        xmlhttp.send("id=" + id + "&" + "name=" + name + "&" + "universe=" + universe + "&" + "power=" + power + "&" + "description=" + description + "&" + "alive=" + alive );
 }
 
 function openModal() {
@@ -207,14 +208,14 @@ function matchesByName(value) {
 }
 
 function validationSaveForm() {
-    var form, id, name, universe, power, description, alive, phone, logo;
+    var form, id, name, universe, power, description, alive;
     form = document.forms["saveForm"];
     id = form["id"].value;
     name = form["name"].value;
     universe = form["universe"].value;
     power = form["power"].value;
     description = form["description"].value;
-    alive = form["alive"].value;
+    alive = form["alive"].checked;
     if (name.length == 0) {
         errorPrint("The name must not be empty");
         return;

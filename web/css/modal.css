@@ -21,6 +21,7 @@
 /*delete modal*/
 .modal-content-delete {
     background-color: #fefefe;
+    opacity: 0.5;
     margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
