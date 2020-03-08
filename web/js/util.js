@@ -16,6 +16,7 @@ function paint(json) {
     table = document.getElementById("tableHeroBody");
     table.innerHTML = "";
     for (x in json) {
+        //можно следующие 3 строки вынести в отдельный метод и так для каждых 3х строк
         tr = document.createElement("tr");
         var tdName = document.createElement("td");
         tdName.innerText = json[x].name;
@@ -59,6 +60,7 @@ function deleteRow(id) {
     var cancelBtnModal = document.getElementById('cancelBtnModal');
     modal.style.display = "block";
     deleteBtnModal.onclick = function() {
+        //было бы хорошо вынести все запросы в отдельный метод типа sendRequest(url, callback, errorCallback)
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -217,6 +219,7 @@ function validationSaveForm() {
     description = form["description"].value;
     alive = form["alive"].checked;
     if (name.length == 0) {
+        //хорошо что вынес в отдельный метод errorPrint
         errorPrint("The name must not be empty");
         return;
     }
@@ -243,6 +246,7 @@ function errorPrint(errorText) {
     validText.innerText = errorText;
     modal.style.display = "block";
 
+    //в большинстве случаев как я понимаяю в твоем коде можно onclick повесить стазу html теге
     closeBtn.onclick = function () {
         modal.style.display = "none";
     };
